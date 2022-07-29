@@ -1,6 +1,19 @@
 # vscode_python_linting
 
-このリポジトリでは，VSCode の Workspace に，Python コードのリンティング環境を構する．VSCode の設定ファイル（`settings.json`）は，ワークスペースの `.vscode` ディレクトリ下に設置する．これにより，プロジェクトの git リポジトリ下で，リンティングの設定を管理する．また，リンティングに使う Python パッケージは venv に requirements.txt で一括インストールし，settings.json で venv にパスを通すことで，環境の違いによる動作不良を軽減する．
+このリポジトリでは，
+Python でチーム開発するのに必要な VSCode のリンティングの設定を，
+VSCode の Workspace 下に構築する．
+Workspace に設定することで，必要な設定を git で追跡してチームで共有できるようにする．
+
+具体的なリンティングの設定は，`.vscode/settings.json` に設置する．また，リンティングに使う Python パッケージは venv に requirements.txt で一括インストールし，settings.json で venv にパスを通すことで，環境の違いによる動作不良を軽減する．
+
+また，チームで必要となる VSCode の Extention は，`.vscode/extensions.json` に記録して git で追跡する．`.vscode/extensions.json` に記録することで，メンバーが必要な Extension を（少しだけ）探しやすくなる．
+
+## 構成の方針
+
+lintter と formatter には，それぞれ flake8 と black を使う．
+
+追加の機能として，docstring の入力補完に `autoDocstring` を，スペルチェック `Code Spell Checker` を，それぞれ，VSCode の Extension としてインストールする．
 
 ## settings.json の設定
 後の設定で利用する settings.json を先に用意する
@@ -31,6 +44,7 @@
         "--aggressive", "--aggressive",
     ],
     "autoDocstring.docstringFormat": "google",
+    "extensions.ignoreRecommendations": false,
 }
 ```
 
@@ -51,13 +65,22 @@
       pip install -r requirements.txt
       ```
 
-## docstring のインストール
-1. VSCode の Extention で `autoDocstring` をインストールする
+## 推奨する Extension の登録
+1. Extension のページを開く
+1. Ctrl + Shift + P を押す
+1. add と入力して，"Add Extension to Workspace Folder Recommendations" で Enter を押す  
+   ここでは，方針に従い `autoDocstring` と `Code Spell Checker` を登録する．
 
-## スペルチェッカーのインストール
-1. VSCode の Extention で `Code Spell Checker` をインストールする
+なお，登録された Extention が，右下のホップアップからレコメンドされるように，
+`settings.json` で `"extensions.ignoreRecommendations": false,` としてある．
+
+## VSCode の Extension のインストール
+1. VSCode の Extensions をクリック
+1. `@recommended` で検索
+1. 表示された Extension を全てインストール
 
 ## 参考資料
 - [VSCodeのPython環境とユーザ/ワークスペース周りの設定](https://qiita.com/tamo_breaker/items/132c219d4e20105d44da)
 - [VS Code コーディング規約を快適に守る](https://qiita.com/firedfly/items/00c34018581c6cec9b84)
 - [Pythonのコードフォーマッターについての個人的ベストプラクティス](https://qiita.com/sin9270/items/85e2dab4c0144c79987d)
+- [チームで推奨するVSCode拡張機能を共有するtips](https://future-architect.github.io/articles/20200828/)

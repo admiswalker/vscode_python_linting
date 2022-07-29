@@ -22,4 +22,5 @@
         "--aggressive", "--aggressive",
     ],
     "autoDocstring.docstringFormat": "google",
+    "extensions.ignoreRecommendations": false,
 }
