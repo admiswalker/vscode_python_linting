@@ -77,7 +77,7 @@ lintter と formatter には，それぞれ flake8 と black を使う．
 ## VSCode の Extension のインストール
 1. VSCode の Extensions をクリック
 1. `@recommended` で検索
-1. 表示された Extension を全てインストール
+1. 表示された Extension を全てインストールする（雲のマークをクリックすると，一括インストールできる）
 
 ## 参考資料
 - [VSCodeのPython環境とユーザ/ワークスペース周りの設定](https://qiita.com/tamo_breaker/items/132c219d4e20105d44da)
