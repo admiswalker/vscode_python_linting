@@ -1,0 +1,25 @@
+{
+    "python.defaultInterpreterPath": ".venv_vscode/bin/python3",
+    "python.terminal.activateEnvInCurrentTerminal": false,
+    "[python]": {
+        "editor.defaultFormatter": null,
+        "editor.formatOnSave": true,
+        "editor.tabSize": 4
+    },
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 1000,
+    "python.linting.lintOnSave": true,
+    "python.linting.pylintEnabled": false,
+    "python.linting.pep8Enabled": false,
+    "python.linting.flake8Enabled": true,
+    "python.linting.flake8Args": [
+        "--ignore=W293, W504",
+        "--max-line-length=150",
+        "--max-complexity=20"
+    ],
+    "python.formatting.provider": "black",
+    "python.formatting.autopep8Args": [
+        "--aggressive", "--aggressive",
+    ],
+    "autoDocstring.docstringFormat": "google",
+}
